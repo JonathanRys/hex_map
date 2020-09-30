@@ -1,0 +1,25 @@
+<html lang="en" class="">
+  <head>
+    <meta charset="UTF-8">
+    <title>Hex map</title>
+    <meta name="robots" content="noindex">
+    <link rel="stylesheet" href="./css/hex_map.css"/>
+  </head>
+  <body>
+    <div class="header">
+      <div class="controls">
+        <button id="reset">Reset</button>
+        <label>Width: <input id="width" type="text" value="AO" /></label>
+        <label>Height: <input id="height" type="number" value="42" /></label>
+      </div>
+      <diV class="stats">
+        <label>Buildable: <output id="buildable"></output></label>
+        &nbsp;&bull;&nbsp;
+        <label>Points: <output id="points" /></output></label>
+      </div>
+    </div>
+    <div id="grid"></div>
+    <script src="./js/data.js"></script>
+    <script src="./js/hex_map.js"></script>
+  </body>
+</html>

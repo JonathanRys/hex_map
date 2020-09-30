@@ -1,0 +1,110 @@
+@charset "utf-8";
+
+body {
+  background: #282828;
+  color: #282828;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 20px;
+  padding-top: 40px;
+  overflow: scroll;
+  touch-action: pax-x pan-y;
+}
+.hexagon {
+  float: left;
+  background-position: center;
+  background-size: contain;
+  margin-right: -26px;
+  margin-bottom: -50px;
+}
+.hexagon .left {
+  float: left;
+  width: 0;
+  border-right: 30px solid #00ad2f;
+  border-top: 52px solid transparent;
+  border-bottom: 52px solid transparent;
+  opacity: 0;
+}
+.hexagon .middle {
+  float: left;
+  width: 60px;
+  height: 104px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  color: #282828;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: larger;
+  font-weight: 700;
+}
+.hexagon .right {
+  float: left;
+  width: 0;
+  border-left: 30px solid #00ad2f;
+  border-top: 52px solid transparent;
+  border-bottom: 52px solid transparent;
+  opacity: 0;
+}
+.hexagon-row {
+  clear: left;
+}
+.hexagon.even {
+  margin-top: 53px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  position: fixed;
+  top: 10px;
+  width: 100%;
+}
+.controls {
+  align-items: center;
+  color: white;
+  display: flex;
+}
+.controls label {
+  margin: 0 3px 0 15px;
+}
+.controls input {
+  border-radius: 5px;
+  padding: 3px 5px;
+}
+.controls button {
+  background: linear-gradient(beige, burlywood);
+  border: none;
+  border-radius: 30px;
+  box-shadow: 1px  1px 4px gray,
+              1px -1px 4px gray,
+             -1px  1px 4px gray,
+             -1px -1px 4px gray;
+  cursor: pointer;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  height: 30px;
+  padding: 5px 15px;
+  text-shadow: 1px  1px 3px rgba(51, 51, 51, .1),
+               1px -1px 3px rgba(51, 51, 51, .1),
+              -1px  1px 3px rgba(51, 51, 51, .1),
+              -1px -1px 3px rgba(51, 51, 51, .1);
+}
+.stats {
+  border: 1px solid #282828;
+  border-radius: 8px;
+  background: white;
+  margin-right: 39px;
+  padding: 8px 15px;
+}
+/* Only use hover effects with a mouse so they aren't "sticky" on mobile */
+@media(hover: hover) and (pointer: fine) {
+  .hexagon:hover .middle {
+    text-shadow: 1px  1px 4px rgba(255, 255, 255, .4),
+                 1px -1px 4px rgba(255, 255, 255, .4),
+                -1px  1px 4px rgba(255, 255, 255, .4),
+                -1px -1px 4px rgba(255, 255, 255, .4);
+  }
+  .controls button:hover {
+    background: linear-gradient(burlywood, beige);
+  }
+}
