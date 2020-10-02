@@ -244,13 +244,18 @@ window.onload = function () {
     }
   });
 
+  // Get the default fill tile element
+  fillTile = document.getElementById('fill-tile');
+  // Update it with the saved color
+  updateTile(fillTile.children[0], TILES[localStorage.getItem('fillColor') || 0], 'fill-cell');
+
   // Attach event handlers for default fill color
-  document.getElementById('fill-tile').addEventListener('click', (e) => {
+  fillTile.addEventListener('click', (e) => {
     if (!e.target.parentNode.classList.contains('hexagon')) {
       return
     }
 
-    const cellIndex ='fill-cell';
+    const cellIndex = 'fill-cell';
     // If the index is at the end start at 0 to prevent saved data from breaking worse when changes are made
     if (gridColors[cellIndex] === TILES.length) {
       gridColors[cellIndex] = 0;
@@ -266,13 +271,13 @@ window.onload = function () {
   });
 
   // Right click
-  document.getElementById('fill-tile').addEventListener('contextmenu', function (e) {
+  fillTile.addEventListener('contextmenu', function (e) {
     e.preventDefault();
     if (!e.target.parentNode.classList.contains('hexagon')) {
       return
     }
 
-    const cellIndex ='fill-cell';
+    const cellIndex = 'fill-cell';
 
     // If the index is 0 start at the end
     if (!gridColors[cellIndex]) {
