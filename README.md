@@ -1,5 +1,5 @@
 # hex_map
-A hexagon map
+A hexagon map tool for creating hexagon grid maps
 
 ## Basic Usage
 Right click to scroll through the tiles in one direction and left click to scroll in the other direction
