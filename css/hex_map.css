@@ -16,6 +16,10 @@ body {
   margin-right: -26px;
   margin-bottom: -50px;
 }
+.hexagon.fill {
+  margin-top: -8%;
+  transform: scale(45%);
+}
 .hexagon .left {
   float: left;
   width: 0;

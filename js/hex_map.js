@@ -26,6 +26,39 @@ window.onload = function () {
     return `Name: ${data.name}\nEnergy Cost: ${data.cost}\nPoints: ${data.points}\nBuildable: ${data.buildable}\nPassable: ${data.passable}\nDefense modifier: ${data.defense_modifier}\nAttack modifier: ${data.attack_modifier}`;
   };
 
+  const updateTile = (target, nextTile, cellIndex) => {
+    const nextColor = nextTile.color;
+
+    target.parentNode.title = makeTitleText(nextTile);
+
+    if (TILES[gridColors[cellIndex] % TILES.length].src.length) {
+      for (let child of target.parentNode.children) {
+        if (child.classList.contains('left')) {
+          child.style.opacity = 0;
+        } else if (child.classList.contains('middle')) {
+          child.style.background = 'transparent';
+        } else if (child.classList.contains('right')) {
+          child.style.opacity = 0;
+        }
+      }
+      target.parentNode.style.backgroundImage = `url(${nextTile.src})`;
+    } else {
+      // Color the tile instead
+      target.parentNode.style.backgroundImage = 'none';
+      for (let child of target.parentNode.children) {
+        if (child.classList.contains('left')) {
+          child.style.opacity = 1;
+          child.style.borderRightColor = nextColor;
+        } else if (child.classList.contains('middle')) {
+          child.style.background = nextColor;
+        } else if (child.classList.contains('right')) {
+          child.style.opacity = 1;
+          child.style.borderLeftColor = nextColor;
+        }
+      }
+    }
+  };
+
   const makeHexagon = (text='', even=false, hidden=false) => {
     const hexagon = document.createElement('div');
     const left = document.createElement('div');
@@ -38,7 +71,7 @@ window.onload = function () {
     
     if (!gridColors[text]) {
       // Default when there is no data
-      gridColors[text] = 0;
+      gridColors[text] = localStorage.getItem('fillColor') || 0;
     }
 
     if (TILES[gridColors[text] % TILES.length].src.length) {
@@ -101,9 +134,11 @@ window.onload = function () {
   const endWidth = fromAlpha(document.getElementById('width').value);
   const endHeight = parseInt(document.getElementById('height').value);
 
+  let fillCell = localStorage.getItem('fillColor') || 0;
+
   // Check localStorage for a saved map
   const data = JSON.parse(localStorage.getItem('hexMap'));
-  const gridColors = data || {};
+  const gridColors = data || {'fill-cell': fillCell};
   
   const fragment = document.createDocumentFragment();
 
@@ -132,40 +167,12 @@ window.onload = function () {
 
     // If the index is at the end start at 0 to prevent saved data from breaking worse when changes are made
     if (gridColors[cellIndex] === TILES.length) {
-      gridColors[cellIndex] = 0;
+      gridColors[cellIndex] = gridColors['fill-cell'];
     }
 
     const nextTile = TILES[++gridColors[cellIndex] % TILES.length];
-    const nextColor = nextTile.color;
 
-    e.target.parentNode.title = makeTitleText(nextTile)
-
-    if (TILES[gridColors[cellIndex] % TILES.length].src.length) {
-      for (let child of e.target.parentNode.children) {
-        if (child.classList.contains('left')) {
-          child.style.opacity = 0;
-        } else if (child.classList.contains('middle')) {
-          child.style.background = 'transparent';
-        } else if (child.classList.contains('right')) {
-          child.style.opacity = 0;
-        }
-      }
-      e.target.parentNode.style.backgroundImage = `url(${nextTile.src})`;
-    } else {
-      // Color the tile instead
-      e.target.parentNode.style.backgroundImage = 'none';
-      for (let child of e.target.parentNode.children) {
-        if (child.classList.contains('left')) {
-          child.style.opacity = 1;
-          child.style.borderRightColor = nextColor;
-        } else if (child.classList.contains('middle')) {
-          child.style.background = nextColor;
-        } else if (child.classList.contains('right')) {
-          child.style.opacity = 1;
-          child.style.borderLeftColor = nextColor;
-        }
-      }
-    }
+    updateTile(e.target, nextTile, cellIndex);
 
     localStorage.setItem('hexMap', JSON.stringify(gridColors));
 
@@ -199,36 +206,8 @@ window.onload = function () {
     }
 
     const nextTile = TILES[--gridColors[cellIndex] % TILES.length];
-    const nextColor = nextTile.color;
 
-    e.target.parentNode.title = makeTitleText(nextTile);
-
-    if (TILES[gridColors[cellIndex] % TILES.length].src.length) {
-      for (let child of e.target.parentNode.children) {
-        if (child.classList.contains('left')) {
-          child.style.opacity = 0;
-        } else if (child.classList.contains('middle')) {
-          child.style.background = 'transparent';
-        } else if (child.classList.contains('right')) {
-          child.style.opacity = 0;
-        }
-      }
-      e.target.parentNode.style.backgroundImage = `url(${nextTile.src})`;
-    } else {
-      // Color the tile instead
-      e.target.parentNode.style.backgroundImage = 'none';
-      for (let child of e.target.parentNode.children) {
-        if (child.classList.contains('left')) {
-          child.style.opacity = 1;
-          child.style.borderRightColor = nextColor;
-        } else if (child.classList.contains('middle')) {
-          child.style.background = nextColor;
-        } else if (child.classList.contains('right')) {
-          child.style.opacity = 1;
-          child.style.borderLeftColor = nextColor;
-        }
-      }
-    }
+    updateTile(e.target, nextTile, cellIndex);
 
     localStorage.setItem('hexMap', JSON.stringify(gridColors));
 
@@ -264,6 +243,51 @@ window.onload = function () {
       localStorage.setItem(e.target.id, e.target.value);
     }
   });
+
+  // Attach event handlers for default fill color
+  document.getElementById('fill-tile').addEventListener('click', (e) => {
+    if (!e.target.parentNode.classList.contains('hexagon')) {
+      return
+    }
+
+    const cellIndex ='fill-cell';
+    // If the index is at the end start at 0 to prevent saved data from breaking worse when changes are made
+    if (gridColors[cellIndex] === TILES.length) {
+      gridColors[cellIndex] = 0;
+    }
+
+    fillCell = ++gridColors[cellIndex] % TILES.length
+
+    const nextTile = TILES[fillCell];
+
+    updateTile(e.target, nextTile, cellIndex);
+
+    localStorage.setItem('fillColor', fillCell);
+  });
+
+  // Right click
+  document.getElementById('fill-tile').addEventListener('contextmenu', function (e) {
+    e.preventDefault();
+    if (!e.target.parentNode.classList.contains('hexagon')) {
+      return
+    }
+
+    const cellIndex ='fill-cell';
+
+    // If the index is 0 start at the end
+    if (!gridColors[cellIndex]) {
+      gridColors[cellIndex] = TILES.length;
+    }
+
+    fillCell = --gridColors[cellIndex] % TILES.length
+
+    const nextTile = TILES[fillCell];
+
+    updateTile(e.target, nextTile, cellIndex);
+
+    localStorage.setItem('fillColor', fillCell);
+    return false;
+  }, false);
 
   // Filter data on the width to only accept alpha chars
 

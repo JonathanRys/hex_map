@@ -11,6 +11,20 @@
         <button id="reset">Reset</button>
         <label>Width: <input id="width" type="text" value="AO" /></label>
         <label>Height: <input id="height" type="number" value="42" /></label>
+        <div id="fill-tile"
+            style="background-image: url('./img/Grassland.png');" 
+            class="hexagon fill" 
+            title="Name: Grassland
+                Energy Cost: 25
+                Points: 1
+                Buildable: true
+                Passable: true
+                Defense modifier: 0.8
+                Attack modifier: 1">
+          <div class="left"></div>
+          <div class="middle">Fill</div>
+          <div class="right"></div>
+        </div>
       </div>
       <diV class="stats">
         <label>Buildable: <output id="buildable"></output></label>
@@ -19,7 +33,7 @@
       </div>
     </div>
     <div id="grid"></div>
-    <script src="./js/data.js"></script>
+    <script src="./js/data_new.js"></script>
     <script src="./js/hex_map.js"></script>
   </body>
 </html>
