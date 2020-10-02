@@ -1,4 +1,4 @@
-# hex_map
+# Hex-map
 A hexagon map tool for creating hexagon grid maps
 
 ## Basic Usage
