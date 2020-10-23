@@ -137,45 +137,36 @@ window.onload = () => {
     return hexagon;
   };
 
+
   /*** Begin program code ***/
+  
+  /* Initialize data */
+
+  // Check localStorage for a saved data
+  const data = JSON.parse(localStorage.getItem('hexMap'));
+  const localHeight = localStorage.getItem('height') || 0;
+  const localWidth = localStorage.getItem('width') || 0;
+  let fillCell = localStorage.getItem('fillColor') || 0;
+
+  const gridColors = data || {'fill-cell': fillCell};
+
   // Counters
   const counters = {
     buildable: 0,
     points: 0
   };
 
-  const localWidth = localStorage.getItem('height');
-  const localHeight = localStorage.getItem('width');
-
-  if (localWidth) {
-    document.getElementById('height').value = localWidth;
-  }
-
-  if (localHeight) {
-    document.getElementById('width').value = localHeight;
-  }
-
-  // Edit these via the UI
-  const endWidth = fromAlpha(document.getElementById('width').value);
-  const endHeight = parseInt(document.getElementById('height').value);
-
-  let fillCell = localStorage.getItem('fillColor') || 0;
-
-  // Check localStorage for a saved map
-  const data = JSON.parse(localStorage.getItem('hexMap'));
-  const gridColors = data || {'fill-cell': fillCell};
+  // Set default values from data
+  const endWidth = fromAlpha(localWidth);
+  const endHeight = parseInt(localHeight);
   
-  const fragment = document.createDocumentFragment();
+  // Update the the UI
+  document.getElementById('height').value = localHeight;
+  document.getElementById('width').value = localWidth;
 
-  // Create the grid
-  for (let h = 1; h <= endHeight; h++) {
-    fragment.appendChild(makeHexagonRow(h, h >= endHeight));
-  }
 
-  // Update localStorage
-  localStorage.setItem('hexMap', JSON.stringify(gridColors));
-
-  // Attach event listeners
+  /*** Attach event listeners ***/
+  // Get the elements we're attaching events to
   const grid = document.getElementById('grid');
 
   // Left click
@@ -256,6 +247,16 @@ window.onload = () => {
     return false;
   }, false);
 
+  /* Construct the grid */
+  const fragment = document.createDocumentFragment();
+
+  for (let h = 1; h <= endHeight; h++) {
+    fragment.appendChild(makeHexagonRow(h, h >= endHeight));
+  }
+
+  // Update localStorage
+  localStorage.setItem('hexMap', JSON.stringify(gridColors));
+
   // Set the width of the grid so it doesn't wrap
   grid.style.width = endWidth * 95 + 100 + 'px';
 
@@ -278,10 +279,12 @@ window.onload = () => {
     }
   });
 
-  /*** Fill tile functionality ***/
+  // This might get drastically changed when I allow selecting of themes
 
+  /*** Fill tile functionality ***/
   // Get the default fill tile element
-  fillTile = document.getElementById('fill-tile');
+  const fillTile = document.getElementById('fill-tile');
+
   // Update it with the saved color
   updateTile(TILES[localStorage.getItem('fillColor') || 0], 'fill-cell');
 
@@ -330,7 +333,7 @@ window.onload = () => {
     return false;
   }, false);
 
-  // Filter data on the width to only accept alpha chars
+  // @todo Filter data on the width to only accept alpha chars
 
   // grid.addEventListener('touchmove', (e) => {});
   // grid.addEventListener('touchend', (e) => {});
