@@ -1,9 +1,9 @@
-window.onload = function () {
-  function fromAlpha(s) {
+window.onload = () => {
+  const fromAlpha = (s) => {
     return s.split('').reduce((r, a) => r * 26 + parseInt(a, 36) - 9, 0) - 1;
   }
 
-  function toAlpha(n) {
+  const toAlpha = (n) => {
     var result = '';
     do {
       result = (n % 26 + 10).toString(36) + result;
@@ -11,6 +11,30 @@ window.onload = function () {
     } while (n >= 0);
     return result.toUpperCase();
   }
+
+  const getCoords = (compoundValue) => {
+    // Split a coordinate string into its constituent parts      
+    for (let i = 0 ; i < compoundValue.length ; i ++) {
+      if (/[A-Z]/.test(compoundValue[i])) continue;
+      return [compoundValue.substr(0, i), compoundValue.substr(-(compoundValue.length - i))];
+    }
+  }
+
+  const getMirrors = (cellIndex) => {
+    const coordinates = getCoords(cellIndex);
+
+    const x = fromAlpha(coordinates[0]);
+    const y = coordinates[1];
+
+    console.log(x % 2)
+
+    return [
+        toAlpha(x) + y,
+        toAlpha(x) + (x % 2 ? 1 + endHeight - y : endHeight - y),
+        toAlpha(endWidth - x) + y,
+        toAlpha(endWidth - x) + (x % 2 ? 1 + endHeight - y : endHeight - y)
+    ];
+  };
 
   const makeHexagonRow = (rowIndex, staggered=false) => {
     const hexagonRow = document.createElement('div');
@@ -27,13 +51,15 @@ window.onload = function () {
     return `Name: ${data.name}\nEnergy Cost: ${data.cost}\nPoints: ${data.points}\nBuildable: ${data.buildable}\nPassable: ${data.passable}\nDefense modifier: ${data.defense_modifier}\nAttack modifier: ${data.attack_modifier}`;
   };
 
-  const updateTile = (target, nextTile, cellIndex) => {
+  const updateTile = (nextTile, cellIndex) => {
+    const target = document.querySelector(`[data-cell='${cellIndex}']`)
     const nextColor = nextTile.color;
 
-    target.parentNode.title = makeTitleText(nextTile);
+    target.title = makeTitleText(nextTile);
 
+    // Check if the tile has a valid src image and apply it
     if (TILES[gridColors[cellIndex] % TILES.length].src.length) {
-      for (let child of target.parentNode.children) {
+      for (let child of target.children) {
         if (child.classList.contains('left')) {
           child.style.opacity = 0;
         } else if (child.classList.contains('middle')) {
@@ -42,11 +68,11 @@ window.onload = function () {
           child.style.opacity = 0;
         }
       }
-      target.parentNode.style.backgroundImage = `url(${nextTile.src})`;
+      target.style.backgroundImage = `url(${nextTile.src})`;
     } else {
-      // Color the tile instead
-      target.parentNode.style.backgroundImage = 'none';
-      for (let child of target.parentNode.children) {
+      // Otherwise, color the tile instead
+      target.style.backgroundImage = 'none';
+      for (let child of target.children) {
         if (child.classList.contains('left')) {
           child.style.opacity = 1;
           child.style.borderRightColor = nextColor;
@@ -135,9 +161,7 @@ window.onload = function () {
   const endWidth = fromAlpha(document.getElementById('width').value);
   const endHeight = parseInt(document.getElementById('height').value);
 
-  // Declare mutables
-  let fillCell = localStorage.getItem('fillColor') || 0; // the selected default fill cell (paint mode)
-  let currentSetIndex = 0; // The index of the current tile within the selected theme and set (toggle mode)
+  let fillCell = localStorage.getItem('fillColor') || 0;
 
   // Check localStorage for a saved map
   const data = JSON.parse(localStorage.getItem('hexMap'));
@@ -175,7 +199,15 @@ window.onload = function () {
 
     const nextTile = TILES[++gridColors[cellIndex] % TILES.length];
 
-    updateTile(e.target, nextTile, cellIndex);
+    const mirroredTiles = getMirrors(cellIndex);
+
+    console.log('mirrors:', mirroredTiles)
+
+    mirroredTiles.forEach( index => {
+      updateTile(nextTile, index)
+    });
+
+    // updateTile(e.target, nextTile, cellIndex);
 
     localStorage.setItem('hexMap', JSON.stringify(gridColors));
 
@@ -210,7 +242,7 @@ window.onload = function () {
 
     const nextTile = TILES[--gridColors[cellIndex] % TILES.length];
 
-    updateTile(e.target, nextTile, cellIndex);
+    updateTile(nextTile, cellIndex);
 
     localStorage.setItem('hexMap', JSON.stringify(gridColors));
 
@@ -252,7 +284,7 @@ window.onload = function () {
   // Get the default fill tile element
   fillTile = document.getElementById('fill-tile');
   // Update it with the saved color
-  updateTile(fillTile.children[0], TILES[localStorage.getItem('fillColor') || 0], 'fill-cell');
+  updateTile(TILES[localStorage.getItem('fillColor') || 0], 'fill-cell');
 
   // Attach event handlers for default fill color
   fillTile.addEventListener('click', (e) => {
@@ -270,7 +302,7 @@ window.onload = function () {
 
     const nextTile = TILES[fillCell];
 
-    updateTile(e.target, nextTile, cellIndex);
+    updateTile(nextTile, cellIndex);
 
     localStorage.setItem('fillColor', fillCell);
   });
@@ -293,7 +325,7 @@ window.onload = function () {
 
     const nextTile = TILES[fillCell];
 
-    updateTile(e.target, nextTile, cellIndex);
+    updateTile(nextTile, cellIndex);
 
     localStorage.setItem('fillColor', fillCell);
     return false;
