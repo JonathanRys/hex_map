@@ -144,7 +144,7 @@ window.onload = function () {
 
   // Create the grid
   for (let h = 1; h <= endHeight; h++) {
-    fragment.appendChild(makeHexagonRow(h, h > endHeight));
+    fragment.appendChild(makeHexagonRow(h, h >= endHeight));
   }
 
   // Update localStorage
