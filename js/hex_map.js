@@ -26,8 +26,6 @@ window.onload = () => {
     const x = fromAlpha(coordinates[0]);
     const y = coordinates[1];
 
-    console.log(x % 2)
-
     return [
         toAlpha(x) + y,
         toAlpha(x) + (x % 2 ? 1 + endHeight - y : endHeight - y),
@@ -187,33 +185,29 @@ window.onload = () => {
     }
 
     const cellIndex = e.target.parentNode.dataset.cell;
-
-    // Decrement counters
-    counters.buildable -= TILES[gridColors[cellIndex] % TILES.length].buildable
-    counters.points -= TILES[gridColors[cellIndex] % TILES.length].points
-
-    // If the index is at the end start at 0 to prevent saved data from breaking worse when changes are made
-    if (gridColors[cellIndex] === TILES.length) {
-      gridColors[cellIndex] = gridColors['fill-cell'];
-    }
-
-    const nextTile = TILES[++gridColors[cellIndex] % TILES.length];
-
     const mirroredTiles = getMirrors(cellIndex);
 
-    console.log('mirrors:', mirroredTiles)
-
     mirroredTiles.forEach( index => {
+      // Decrement counters
+      counters.buildable -= TILES[gridColors[index] % TILES.length].buildable
+      counters.points -= TILES[gridColors[index] % TILES.length].points
+
+      // If the index is at the end start at 0 to prevent saved data from breaking worse when changes are made
+      if (gridColors[index] === TILES.length) {
+        gridColors[index] = gridColors['fill-cell'];
+      }
+
+      // Update the counter and get the next tile
+      const nextTile = TILES[++gridColors[index] % TILES.length];
+
       updateTile(nextTile, index)
+
+      // Increment counters
+      counters.buildable += TILES[gridColors[index] % TILES.length].buildable
+      counters.points += TILES[gridColors[index] % TILES.length].points
     });
 
-    // updateTile(e.target, nextTile, cellIndex);
-
     localStorage.setItem('hexMap', JSON.stringify(gridColors));
-
-    // Increment counters
-    counters.buildable += TILES[gridColors[cellIndex] % TILES.length].buildable
-    counters.points += TILES[gridColors[cellIndex] % TILES.length].points
 
     // Update stats
     document.getElementById('buildable').textContent = `${Math.round(counters.buildable / 4)} / ${counters.buildable}`;
@@ -230,25 +224,30 @@ window.onload = () => {
     }
 
     const cellIndex = e.target.parentNode.dataset.cell;
+    const mirroredTiles = getMirrors(cellIndex);
 
-    // Decrement counters
-    counters.buildable -= TILES[gridColors[cellIndex] % TILES.length].buildable
-    counters.points -= TILES[gridColors[cellIndex] % TILES.length].points
+    mirroredTiles.forEach( index => {
+      // Decrement counters
+      counters.buildable -= TILES[gridColors[index] % TILES.length].buildable
+      counters.points -= TILES[gridColors[index] % TILES.length].points
 
-    // If the index is 0 start at the end
-    if (!gridColors[cellIndex]) {
-      gridColors[cellIndex] = TILES.length;
-    }
+      // If the index is 0 start at the end
+      if (!gridColors[index]) {
+        gridColors[index] = TILES.length;
+      }
 
-    const nextTile = TILES[--gridColors[cellIndex] % TILES.length];
+      // Update the counter and get the next tile
+      const nextTile = TILES[--gridColors[index] % TILES.length];
 
-    updateTile(nextTile, cellIndex);
+      updateTile(nextTile, index)
+
+      // Increment counters
+      counters.buildable += TILES[gridColors[index] % TILES.length].buildable
+      counters.points += TILES[gridColors[index] % TILES.length].points
+    });
+
 
     localStorage.setItem('hexMap', JSON.stringify(gridColors));
-
-    // Increment counters
-    counters.buildable += TILES[gridColors[cellIndex] % TILES.length].buildable
-    counters.points += TILES[gridColors[cellIndex] % TILES.length].points
 
     // Update stats
     document.getElementById('buildable').textContent = `${Math.round(counters.buildable / 4)} / ${counters.buildable}`;
