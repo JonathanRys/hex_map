@@ -17,7 +17,7 @@ body {
   margin-bottom: -50px;
 }
 .hexagon.fill {
-  margin-top: -8%;
+  margin-top: -5%;
   transform: scale(45%);
 }
 .hexagon .left {
@@ -71,7 +71,8 @@ body {
 .controls label {
   margin: 0 3px 0 15px;
 }
-.controls input {
+.controls input,
+.controls select {
   border-radius: 5px;
   padding: 3px 5px;
 }

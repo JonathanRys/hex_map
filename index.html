@@ -13,8 +13,8 @@
         <label>Height: <input id="height" type="number" value="42" /></label>
         <div id="fill-tile"
             data-cell="fill-cell"
-            style="background-image: url('./img/Grassland.png');" 
-            class="hexagon fill"
+            style="background-image: url('./img/Grass/Grassland.png');" 
+            class="hexagon fill" 
             title="Name: Grassland
                 Energy Cost: 25
                 Points: 1
@@ -26,15 +26,36 @@
           <div class="middle">Fill</div>
           <div class="right"></div>
         </div>
+        <label class="tile-select">
+          Select Theme:
+          <select id="theme">
+            <option value="grass" selected>Grass</option>
+            <option value="sand">Sand</option>
+            <option value="halloween">Halloween</option>
+            <option value="easter">Easter</option>
+            <!-- <option value="winter">Winter</option> -->
+          </select>
+        </label>
+        <label style="display: none;" class="tile-select">
+          Select tile set:
+          <select id="tileset">
+            <option value="standard" selected>Standard</option>
+            <option value="resource">Resource</option>
+            <option value="special">Special</option>
+          </select>
+        </label>
       </div>
-      <diV class="stats">
+      <div class="stats">
         <label>Buildable: <output id="buildable"></output></label>
         &nbsp;&bull;&nbsp;
         <label>Points: <output id="points" /></output></label>
       </div>
     </div>
     <div id="grid"></div>
-    <script src="./js/data_new.js"></script>
-    <script src="./js/hex_map.js"></script>
+    <script src="./js/data_full.js"></script>
+    <script src="./js/hex_map_full.js"></script>
+    <script>
+      // JS here
+    </script>
   </body>
 </html>
