@@ -108,7 +108,7 @@ window.onload = () => {
     const left = document.createElement('div');
     const middle = document.createElement('div');
     const right = document.createElement('div');
-    const currentTile = activeTiles[gridColors[text] % activeTiles.length];
+    let currentTile = activeTiles[gridColors[text] % activeTiles.length];
     
     // Add the text
     middle.innerText = text;
@@ -117,6 +117,7 @@ window.onload = () => {
     if (!gridColors[text]) {
       // Default when there is no data
       gridColors[text] = localStorage.getItem('fillColor') || 0;
+      currentTile = activeTiles[gridColors[text] % activeTiles.length];
     }
 
     if (currentTile.src.length) {
@@ -164,8 +165,8 @@ window.onload = () => {
 
   // Check localStorage for a saved data
   const data = JSON.parse(localStorage.getItem('hexMap'));
-  const localHeight = localStorage.getItem('height') || 0;
-  const localWidth = localStorage.getItem('width') || 0;
+  const localHeight = localStorage.getItem('height') || 3;
+  const localWidth = localStorage.getItem('width') || 'C';
   let selectedTheme = localStorage.getItem('theme') || 'grass';
   let selectedTileset = localStorage.getItem('tileset') || 'standard';
   let fillCell = localStorage.getItem('fillColor') || 0;

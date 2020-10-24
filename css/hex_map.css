@@ -17,8 +17,15 @@ body {
   margin-bottom: -50px;
 }
 .hexagon.fill {
+  display: inline-block;
   margin-top: -5%;
-  transform: scale(45%);
+  transform: scale(0.45);
+  -webkit-transform: scale(0.45);
+  -moz-transform: scale(0.45);
+  -o-transform: scale(0.45);
+  -ms-transform: scale(0.45);
+  background-repeat: no-repeat;
+  max-height: 120px;
 }
 .hexagon .left {
   float: left;
@@ -98,6 +105,7 @@ body {
   border: 1px solid #282828;
   border-radius: 8px;
   background: white;
+  height: max-content;
   margin-right: 39px;
   padding: 8px 15px;
 }
