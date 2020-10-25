@@ -391,5 +391,3 @@ window.onload = () => {
   // grid.addEventListener('touchmove', (e) => {});
   // grid.addEventListener('touchend', (e) => {});
 };
-
-  
