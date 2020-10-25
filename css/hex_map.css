@@ -9,6 +9,9 @@ body {
   overflow: scroll;
   touch-action: pax-x pan-y;
 }
+.grid {
+  touch-action: manipulation;
+}
 .hexagon {
   float: left;
   background-position: center;
@@ -17,8 +20,15 @@ body {
   margin-bottom: -50px;
 }
 .hexagon.fill {
-  margin-top: -8%;
-  transform: scale(45%);
+  display: inline-block;
+  margin-top: -50px;
+  transform: scale(0.45);
+  -webkit-transform: scale(0.45);
+  -moz-transform: scale(0.45);
+  -o-transform: scale(0.45);
+  -ms-transform: scale(0.45);
+  background-repeat: no-repeat;
+  max-height: 120px;
 }
 .hexagon .left {
   float: left;
@@ -71,8 +81,10 @@ body {
 .controls label {
   margin: 0 3px 0 15px;
 }
-.controls input {
+.controls input,
+.controls select {
   border-radius: 5px;
+  max-width: 105px;
   padding: 3px 5px;
 }
 .controls button {
@@ -97,6 +109,7 @@ body {
   border: 1px solid #282828;
   border-radius: 8px;
   background: white;
+  height: max-content;
   margin-right: 39px;
   padding: 8px 15px;
 }
