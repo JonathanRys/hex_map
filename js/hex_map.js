@@ -28,10 +28,10 @@ window.onload = () => {
     const y = coordinates[1];
 
     return [
-        coordinates[0] + y,
-        coordinates[0] + (x % 2 ? 1 + endHeight - y : endHeight - y),
-        toAlpha(endWidth - x) + y,
-        toAlpha(endWidth - x) + (x % 2 ? 1 + endHeight - y : endHeight - y)
+      coordinates[0] + y,
+      coordinates[0] + (x % 2 ? 1 + endHeight - y : endHeight - y),
+      toAlpha(endWidth - x) + y,
+      toAlpha(endWidth - x) + (x % 2 ? 1 + endHeight - y : endHeight - y)
     ];
   };
 
@@ -168,7 +168,7 @@ window.onload = () => {
   const localHeight = localStorage.getItem('height') || 3;
   const localWidth = localStorage.getItem('width') || 'C';
   let selectedTheme = localStorage.getItem('theme') || 'grass';
-  let selectedTileset = localStorage.getItem('tileset') || 'standard';
+  // let selectedTileset = localStorage.getItem('tileset') || 'standard';
   let fillCell = localStorage.getItem('fillColor') || 0;
 
   const gridColors = data || {'fill-cell': fillCell};
