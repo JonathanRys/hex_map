@@ -14,9 +14,6 @@ The top left of the map has a pocket for the base:
 
 ![Top-left of map](https://jonathanrys.s3.us-east-1.amazonaws.com/grid_top_left.png)
 
-But in order to keep the odd tiles aligned, the even tiles in the last row need to be hidden:
+As do all the other corners.
 
-![Bottom-right of map](https://jonathanrys.s3.us-east-1.amazonaws.com/grid_bottom_right.png)
-
-This is done by clicking through the tiles until you reach the Void tile
-
+A theme can be selected from the theme selector.  THe available themese are: Grass, Sand, Halloween and Easter.  Changing from one theme to another should preserve most tiles but some tile sets have more special tiles than others so some tiles may not convert correctly to other themes.
