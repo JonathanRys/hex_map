@@ -189,6 +189,7 @@ window.onload = () => {
   // Update the the UI
   document.getElementById('height').value = localHeight;
   document.getElementById('width').value = localWidth;
+  document.getElementById('theme').value = selectedTheme;
 
 
   /*** Attach event listeners ***/
