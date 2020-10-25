@@ -16,4 +16,13 @@ The top left of the map has a pocket for the base:
 
 As do all the other corners.
 
-A theme can be selected from the theme selector.  The available themese are: Grass, Sand, Halloween and Easter.  Changing from one theme to another should preserve most tiles but some tile sets have more special tiles than others so some tiles may not convert correctly to other themes.
+### Theme selector
+A theme can be selected from the theme selector.
+
+![Theme selector](https://jonathanrys.s3.us-east-1.amazonaws.com/theme_selector.png)
+
+The available themes are: Grass, Sand, Halloween and Easter.  Changing from one theme to another should preserve most tiles but some tile sets have more special tiles than others so some tiles may not convert correctly to other themes.
+
+### Fill tile
+
+In the above image you will notice a fill tile.  Clicking this tile will toggle through the available tiles in a theme.  If a tile is unavailable in the selected theme, the coresponding tile from the grass set is used.  Once a fill tile is selected, clicking any tile on the map will paint that tile and its mirrored cousins with the selected tile.
