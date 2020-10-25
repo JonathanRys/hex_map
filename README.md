@@ -16,4 +16,4 @@ The top left of the map has a pocket for the base:
 
 As do all the other corners.
 
-A theme can be selected from the theme selector.  THe available themese are: Grass, Sand, Halloween and Easter.  Changing from one theme to another should preserve most tiles but some tile sets have more special tiles than others so some tiles may not convert correctly to other themes.
+A theme can be selected from the theme selector.  The available themese are: Grass, Sand, Halloween and Easter.  Changing from one theme to another should preserve most tiles but some tile sets have more special tiles than others so some tiles may not convert correctly to other themes.
