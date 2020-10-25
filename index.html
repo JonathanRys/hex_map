@@ -1,6 +1,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=.25, maximum-scale=12.0, minimum-scale=.25, user-scalable=yes"/>
     <title>Hex map</title>
     <meta name="robots" content="noindex">
     <link rel="stylesheet" href="./css/hex_map.css"/>
@@ -11,6 +12,26 @@
         <button id="reset">Reset</button>
         <label>Width: <input id="width" type="text" value="AO" /></label>
         <label>Height: <input id="height" type="number" value="42" /></label>
+        <label class="tile-select">
+          Select Theme:
+          <select id="theme">
+            <option value="grass" selected>Grass</option>
+            <option value="sand">Sand</option>
+            <option value="halloween">Halloween</option>
+            <option value="easter">Easter</option>
+            <!-- <option value="winter">Winter</option> -->
+          </select>
+        </label>
+        <!--
+          <label style="display: none;" class="tile-select">
+            Select tile set:
+            <select id="tileset">
+              <option value="standard" selected>Standard</option>
+              <option value="resource">Resource</option>
+              <option value="special">Special</option>
+            </select>
+          </label>
+        -->
         <div id="fill-tile"
             data-cell="fill-cell"
             style="background-image: url('./img/standard/grass/Grassland.png');" 
@@ -26,24 +47,6 @@
           <div class="middle">Fill</div>
           <div class="right"></div>
         </div>
-        <label class="tile-select">
-          Select Theme:
-          <select id="theme">
-            <option value="grass" selected>Grass</option>
-            <option value="sand">Sand</option>
-            <option value="halloween">Halloween</option>
-            <option value="easter">Easter</option>
-            <!-- <option value="winter">Winter</option> -->
-          </select>
-        </label>
-        <label style="display: none;" class="tile-select">
-          Select tile set:
-          <select id="tileset">
-            <option value="standard" selected>Standard</option>
-            <option value="resource">Resource</option>
-            <option value="special">Special</option>
-          </select>
-        </label>
       </div>
       <div class="stats">
         <label>Buildable: <output id="buildable"></output></label>
@@ -51,11 +54,11 @@
         <label>Points: <output id="points" /></output></label>
       </div>
     </div>
-    <div id="grid"></div>
+    <div id="grid" class="grid"></div>
     <script src="./js/data.js"></script>
     <script src="./js/hex_map.js"></script>
     <script>
-      // JS here
+      // test JS here
     </script>
   </body>
 </html>

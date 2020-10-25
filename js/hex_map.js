@@ -68,7 +68,7 @@ window.onload = () => {
   };
 
   const updateTile = (nextTile, cellIndex) => {
-    const target = document.querySelector(`[data-cell='${cellIndex}']`)
+    const target = document.querySelector(`[data-cell='${cellIndex}']`);
     const nextColor = nextTile.color;
     const currentTile = activeTiles[gridColors[cellIndex] % activeTiles.length];
 
@@ -132,8 +132,8 @@ window.onload = () => {
     }
 
     // Increment counters
-    counters.buildable += currentTile.buildable
-    counters.points += currentTile.points
+    counters.buildable += currentTile.buildable;
+    counters.points += currentTile.points;
 
     // Add classes
     hexagon.classList.add('hexagon');
@@ -149,7 +149,7 @@ window.onload = () => {
       hexagon.style.visibility = 'hidden';
     }
 
-    hexagon.title = makeTitleText(currentTile)
+    hexagon.title = makeTitleText(currentTile);
 
     hexagon.appendChild(left);
     hexagon.appendChild(middle);
@@ -173,6 +173,7 @@ window.onload = () => {
 
   const gridColors = data || {'fill-cell': fillCell};
 
+  // Get the combined array of tiles from the selected set
   const activeTiles = getActiveTiles(selectedTheme);
 
   // Counters
@@ -197,7 +198,7 @@ window.onload = () => {
   // Left click
   grid.addEventListener('click', e => {
     if (!e.target.parentNode.classList.contains('hexagon')) {
-      return
+      return;
     }
 
     const cellIndex = e.target.parentNode.dataset.cell;
@@ -206,19 +207,19 @@ window.onload = () => {
     mirroredTiles.forEach( index => {
       let currentTile = activeTiles[gridColors[index] % activeTiles.length];
       // Decrement counters
-      counters.buildable -= currentTile.buildable
-      counters.points -= currentTile.points
+      counters.buildable -= currentTile.buildable;
+      counters.points -= currentTile.points;
 
       gridColors[index] = gridColors['fill-cell'];
 
       // Update the counter and get the next tile
       const nextTile = activeTiles[gridColors[index] % activeTiles.length];
 
-      updateTile(nextTile, index)
+      updateTile(nextTile, index);
 
       // Increment counters
-      counters.buildable += nextTile.buildable
-      counters.points += nextTile.points
+      counters.buildable += nextTile.buildable;
+      counters.points += nextTile.points;
     });
 
     localStorage.setItem('hexMap', JSON.stringify(gridColors));
@@ -244,19 +245,19 @@ window.onload = () => {
       let currentTile = activeTiles[gridColors[index] % activeTiles.length];
 
       // Decrement counters
-      counters.buildable -= currentTile.buildable
-      counters.points -= currentTile.points
+      counters.buildable -= currentTile.buildable;
+      counters.points -= currentTile.points;
 
       gridColors[index] = gridColors['fill-cell'];
 
       // Update the counter and get the next tile
       const nextTile = activeTiles[gridColors[index] % activeTiles.length];
 
-      updateTile(nextTile, index)
+      updateTile(nextTile, index);
 
       // Increment counters
-      counters.buildable += nextTile.buildable
-      counters.points += nextTile.points
+      counters.buildable += nextTile.buildable;
+      counters.points += nextTile.points;
     });
 
     localStorage.setItem('hexMap', JSON.stringify(gridColors));
@@ -312,25 +313,26 @@ window.onload = () => {
     location.reload();
   });
 
-  document.getElementById('tileset').addEventListener('change', e => {
-    e.stopPropagation();
-    selectedTileset = e.target.value;
+  // Do I need this?
+  // document.getElementById('tileset').addEventListener('change', e => {
+  //   e.stopPropagation();
+  //   selectedTileset = e.target.value;
 
-    // Update localStorage
-    localStorage.setItem('tileset', selectedTileset);
-    // Update the active fill tile
-    
-  });
-
-  // Toggle mode vs fill mode
+  //   // Update localStorage
+  //   localStorage.setItem('tileset', selectedTileset);
+  //   // Update the active fill tile
+  // });
 
 
+  // @todo Add toggle mode vs fill mode
 
+  // @todo Add full mobile zoom and paint support
 
-
-
-
-  // This might get drastically changed when I allow selecting of themes
+  /***
+    After looking at the docs I think I should make first finger paint, second finger pan
+    double-finger pan too
+    or tap = paint/toggle, drag = pan?
+  ***/
 
   /*** Fill tile functionality ***/
   // Get the default fill tile element
@@ -342,7 +344,7 @@ window.onload = () => {
   // Attach event handlers for default fill color
   fillTile.addEventListener('click', e => {
     if (!e.target.parentNode.classList.contains('hexagon')) {
-      return
+      return;
     }
 
     const cellIndex = 'fill-cell';
@@ -351,7 +353,7 @@ window.onload = () => {
       gridColors[cellIndex] = 0;
     }
 
-    fillCell = ++gridColors[cellIndex] % activeTiles.length
+    fillCell = ++gridColors[cellIndex] % activeTiles.length;
 
     const nextTile = activeTiles[fillCell];
 
@@ -364,7 +366,7 @@ window.onload = () => {
   fillTile.addEventListener('contextmenu', e => {
     e.preventDefault();
     if (!e.target.parentNode.classList.contains('hexagon')) {
-      return
+      return;
     }
 
     const cellIndex = 'fill-cell';
@@ -374,7 +376,7 @@ window.onload = () => {
       gridColors[cellIndex] = activeTiles.length;
     }
 
-    fillCell = --gridColors[cellIndex] % activeTiles.length
+    fillCell = --gridColors[cellIndex] % activeTiles.length;
 
     const nextTile = activeTiles[fillCell];
 

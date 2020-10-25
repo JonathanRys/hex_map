@@ -9,6 +9,9 @@ body {
   overflow: scroll;
   touch-action: pax-x pan-y;
 }
+.grid {
+  touch-action: manipulation;
+}
 .hexagon {
   float: left;
   background-position: center;
@@ -18,7 +21,7 @@ body {
 }
 .hexagon.fill {
   display: inline-block;
-  margin-top: -5%;
+  margin-top: -50px;
   transform: scale(0.45);
   -webkit-transform: scale(0.45);
   -moz-transform: scale(0.45);
@@ -81,6 +84,7 @@ body {
 .controls input,
 .controls select {
   border-radius: 5px;
+  max-width: 105px;
   padding: 3px 5px;
 }
 .controls button {
