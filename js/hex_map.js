@@ -108,7 +108,7 @@ window.onload = () => {
     const left = document.createElement('div');
     const middle = document.createElement('div');
     const right = document.createElement('div');
-    let currentTile = activeTiles[gridColors[text] % activeTiles.length];
+    let currentTile = activeTiles[gridColors[text] % activeTiles.length || 0];
     
     // Add the text
     middle.innerText = text;
