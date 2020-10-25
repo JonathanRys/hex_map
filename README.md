@@ -17,6 +17,7 @@ The top left of the map has a pocket for the base:
 As do all the other corners.
 
 A theme can be selected from the theme selector.
+
 ![Theme selector](https://jonathanrys.s3.us-east-1.amazonaws.com/theme_selector.png)
 
 The available themes are: Grass, Sand, Halloween and Easter.  Changing from one theme to another should preserve most tiles but some tile sets have more special tiles than others so some tiles may not convert correctly to other themes.
