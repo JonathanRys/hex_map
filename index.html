@@ -9,9 +9,11 @@
   <body>
     <div class="header">
       <div class="controls">
-        <button id="reset">Reset</button>
-        <label>Width: <input id="width" type="text" value="AO" /></label>
-        <label>Height: <input id="height" type="number" value="42" /></label>
+        <div class="dimensions">
+          <button id="reset">Reset</button>
+          <label>Width: <input id="width" type="text" value="AO" /></label>
+          <label>Height: <input id="height" type="number" value="42" /></label>
+        </div>
         <label>Change theme: <input id="change-theme" type="checkbox" checked="checked" /></label>
         <label class="tile-select">
           Select Theme:
@@ -51,7 +53,7 @@
       </div>
       <div class="stats">
         <label>Buildable: <output id="buildable"></output></label>
-        &nbsp;&bull;&nbsp;
+        <label>Center: <output id="center"></output></label>
         <label>Points: <output id="points" /></output></label>
       </div>
     </div>

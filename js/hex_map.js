@@ -38,8 +38,9 @@ window.onload = () => {
     ];
   };
 
-  const findCenter = () => {
+  const findCenter = (endWidth, endHeight) => {
     //
+    return `${toAlpha(Math.floor(endWidth / 2))}${Math.floor(endHeight / 2)}`;
   };
 
   // Function to get all tiles in the set
@@ -103,19 +104,20 @@ window.onload = () => {
       }
       target.style.backgroundImage = `url(${nextTile.src})`;
     } else {
+      // This is a fallback for missing tiles
       // Otherwise, color the tile instead
-      // target.style.backgroundImage = 'none';
-      // for (let child of target.children) {
-      //   if (child.classList.contains('left')) {
-      //     child.style.opacity = 1;
-      //     child.style.borderRightColor = nextColor;
-      //   } else if (child.classList.contains('middle')) {
-      //     child.style.background = nextColor;
-      //   } else if (child.classList.contains('right')) {
-      //     child.style.opacity = 1;
-      //     child.style.borderLeftColor = nextColor;
-      //   }
-      // }
+      target.style.backgroundImage = 'none';
+      for (let child of target.children) {
+        if (child.classList.contains('left')) {
+          child.style.opacity = 1;
+          child.style.borderRightColor = nextColor;
+        } else if (child.classList.contains('middle')) {
+          child.style.background = nextColor;
+        } else if (child.classList.contains('right')) {
+          child.style.opacity = 1;
+          child.style.borderLeftColor = nextColor;
+        }
+      }
     }
   };
 
@@ -203,11 +205,11 @@ window.onload = () => {
   const endWidth = fromAlpha(localWidth);
   const endHeight = parseInt(localHeight);
   
+  document.getElementById('center').value = findCenter(endWidth, endHeight);
   // Update the the UI
   document.getElementById('height').value = localHeight;
   document.getElementById('width').value = localWidth;
   document.getElementById('theme').value = selectedTheme;
-
 
   /*** Attach event listeners ***/
   // Get the elements we're attaching events to
@@ -351,8 +353,7 @@ window.onload = () => {
   // });
 
 
-  // @todo Add toggle mode vs fill mode
-
+  // @todo Rework the header for mobile
   // @todo Add full mobile zoom and paint support
 
   /***
@@ -376,16 +377,17 @@ window.onload = () => {
 
     const cellIndex = 'fill-cell';
     // If the index is at the end start at 0 to prevent saved data from breaking worse when changes are made
-    if (gridColors[cellIndex] === activeTiles.length) {
+    if (gridColors[cellIndex] >= activeTiles.length) {
       gridColors[cellIndex] = 0;
     }
 
-    const fillCell = ++gridColors[cellIndex] % activeTiles.length;
-    const nextTile = activeTiles[fillCell];
+    // Update the color array
+    gridColors[cellIndex] = (gridColors[cellIndex] + 1) % activeTiles.length;
+    const nextTile = activeTiles[gridColors[cellIndex]];
 
     updateTile(nextTile, cellIndex);
 
-    localStorage.setItem('fillColor', fillCell);
+    localStorage.setItem('fillColor', gridColors[cellIndex]);
   });
 
   // Right click
@@ -402,12 +404,13 @@ window.onload = () => {
       gridColors[cellIndex] = activeTiles.length;
     }
 
-    const fillCell = --gridColors[cellIndex] % activeTiles.length;
-    const nextTile = activeTiles[fillCell];
+    // Update the color array
+    gridColors[cellIndex] = (gridColors[cellIndex] - 1) % activeTiles.length;
+    const nextTile = activeTiles[gridColors[cellIndex]];
 
     updateTile(nextTile, cellIndex);
 
-    localStorage.setItem('fillColor', fillCell);
+    localStorage.setItem('fillColor', gridColors[cellIndex]);
     return false;
   }, false);
 
