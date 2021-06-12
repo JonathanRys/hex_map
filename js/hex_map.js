@@ -1,3 +1,5 @@
+'use strict';
+
 window.onload = () => {
   const fromAlpha = s => {
     return s.split('').reduce((r, a) => r * 26 + parseInt(a, 36) - 9, 0) - 1;
@@ -15,31 +17,36 @@ window.onload = () => {
   const getCoords = compoundValue => {
     // Split a coordinate string into its constituent parts      
     for (let i = 0 ; i < compoundValue.length ; i ++) {
+
       if (/[A-Z]/.test(compoundValue[i])) continue;
-      return [compoundValue.substr(0, i), compoundValue.substr(-(compoundValue.length - i))];
+      const x = compoundValue.substr(0, i);
+      const y = compoundValue.substr(-(compoundValue.length - i));
+      return [x, y];
     }
   }
 
   // Function to get the repective tile in all other quadrants
   const getMirrors = cellIndex => {
-    const coordinates = getCoords(cellIndex);
-
-    const x = fromAlpha(coordinates[0]);
-    const y = coordinates[1];
+    const [_x, y] = getCoords(cellIndex);
+    const x = fromAlpha(_x);
 
     return [
-      coordinates[0] + y,
-      coordinates[0] + (x % 2 ? 1 + endHeight - y : endHeight - y),
+      _x + y,
+      _x + (x % 2 ? 1 + endHeight - y : endHeight - y),
       toAlpha(endWidth - x) + y,
       toAlpha(endWidth - x) + (x % 2 ? 1 + endHeight - y : endHeight - y)
     ];
   };
 
+  const findCenter = () => {
+    //
+  };
+
   // Function to get all tiles in the set
   const getActiveTiles = theme => {
+    // This is a translation pattern
     // Use an array to assure order.
-    // Special tiles may have a variable length so they need to be last
-    const tilesets = ['standard', 'resource', 'special'];
+    const tilesets = ['standard', 'resource', 'special']; // Special tiles may have a variable length so they need to be last
 
     const activeTiles = [];
 
@@ -64,7 +71,15 @@ window.onload = () => {
   }
 
   const makeTitleText = data => {
-    return `Name: ${data.name}\nEnergy Cost: ${data.cost}\nPoints: ${data.points}\nBuildable: ${data.buildable}\nPassable: ${data.passable}\nDefense modifier: ${data.defense_modifier}\nAttack modifier: ${data.attack_modifier}`;
+    return `
+      Name: ${data.name}\n
+      Energy Cost: ${data.cost}\n
+      Points: ${data.points}\n
+      Buildable: ${data.buildable}\n
+      Passable: ${data.passable}\n
+      Defense modifier: ${data.defense_modifier}\n
+      Attack modifier: ${data.attack_modifier}
+    `;
   };
 
   const updateTile = (nextTile, cellIndex) => {
@@ -73,6 +88,7 @@ window.onload = () => {
     const currentTile = activeTiles[gridColors[cellIndex] % activeTiles.length];
 
     target.title = makeTitleText(nextTile);
+
 
     // Check if the tile has a valid src image and apply it
     if (currentTile.src.length) {
@@ -88,18 +104,18 @@ window.onload = () => {
       target.style.backgroundImage = `url(${nextTile.src})`;
     } else {
       // Otherwise, color the tile instead
-      target.style.backgroundImage = 'none';
-      for (let child of target.children) {
-        if (child.classList.contains('left')) {
-          child.style.opacity = 1;
-          child.style.borderRightColor = nextColor;
-        } else if (child.classList.contains('middle')) {
-          child.style.background = nextColor;
-        } else if (child.classList.contains('right')) {
-          child.style.opacity = 1;
-          child.style.borderLeftColor = nextColor;
-        }
-      }
+      // target.style.backgroundImage = 'none';
+      // for (let child of target.children) {
+      //   if (child.classList.contains('left')) {
+      //     child.style.opacity = 1;
+      //     child.style.borderRightColor = nextColor;
+      //   } else if (child.classList.contains('middle')) {
+      //     child.style.background = nextColor;
+      //   } else if (child.classList.contains('right')) {
+      //     child.style.opacity = 1;
+      //     child.style.borderLeftColor = nextColor;
+      //   }
+      // }
     }
   };
 
@@ -114,9 +130,10 @@ window.onload = () => {
     middle.innerText = text;
     hexagon.setAttribute('data-cell', text);
     
-    if (!gridColors[text]) {
+    if (gridColors[text] === undefined) {
       // Default when there is no data
       gridColors[text] = localStorage.getItem('fillColor') || 0;
+      console.log('grid color:', gridColors[text])
       currentTile = activeTiles[gridColors[text] % activeTiles.length];
     }
 
@@ -174,7 +191,7 @@ window.onload = () => {
   const gridColors = data || {'fill-cell': fillCell};
 
   // Get the combined array of tiles from the selected set
-  const activeTiles = getActiveTiles(selectedTheme);
+  let activeTiles = getActiveTiles(selectedTheme);
 
   // Counters
   const counters = {
@@ -233,42 +250,42 @@ window.onload = () => {
   });
 
   // Right click
-  grid.addEventListener('contextmenu', e => {
-    e.preventDefault();
-    if (!e.target.parentNode.classList.contains('hexagon')) {
-      return
-    }
+  // grid.addEventListener('contextmenu', e => {
+  //   e.preventDefault();
+  //   if (!e.target.parentNode.classList.contains('hexagon')) {
+  //     return
+  //   }
 
-    const cellIndex = e.target.parentNode.dataset.cell;
-    const mirroredTiles = getMirrors(cellIndex);
+  //   const cellIndex = e.target.parentNode.dataset.cell;
+  //   const mirroredTiles = getMirrors(cellIndex);
 
-    mirroredTiles.forEach( index => {
-      let currentTile = activeTiles[gridColors[index] % activeTiles.length];
+  //   mirroredTiles.forEach( index => {
+  //     let currentTile = activeTiles[gridColors[index] % activeTiles.length];
 
-      // Decrement counters
-      counters.buildable -= currentTile.buildable;
-      counters.points -= currentTile.points;
+  //     // Decrement counters
+  //     counters.buildable -= currentTile.buildable;
+  //     counters.points -= currentTile.points;
 
-      gridColors[index] = gridColors['fill-cell'];
+  //     gridColors[index] = gridColors['fill-cell'];
 
-      // Update the counter and get the next tile
-      const nextTile = activeTiles[gridColors[index] % activeTiles.length];
+  //     // Update the counter and get the next tile
+  //     const nextTile = activeTiles[gridColors[index] % activeTiles.length];
 
-      updateTile(nextTile, index);
+  //     updateTile(nextTile, index);
 
-      // Increment counters
-      counters.buildable += nextTile.buildable;
-      counters.points += nextTile.points;
-    });
+  //     // Increment counters
+  //     counters.buildable += nextTile.buildable;
+  //     counters.points += nextTile.points;
+  //   });
 
-    localStorage.setItem('hexMap', JSON.stringify(gridColors));
+  //   localStorage.setItem('hexMap', JSON.stringify(gridColors));
 
-    // Update stats
-    document.getElementById('buildable').textContent = `${Math.round(counters.buildable / 4)} / ${counters.buildable}`;
-    document.getElementById('points').textContent = `${Math.round(counters.points / 4)} / ${counters.points}`;
+  //   // Update stats
+  //   document.getElementById('buildable').textContent = `${Math.round(counters.buildable / 4)} / ${counters.buildable}`;
+  //   document.getElementById('points').textContent = `${Math.round(counters.points / 4)} / ${counters.points}`;
 
-    return false;
-  }, false);
+  //   return false;
+  // }, false);
 
   /* Construct the grid */
   const fragment = document.createDocumentFragment();
@@ -310,8 +327,17 @@ window.onload = () => {
 
     // Update localStorage
     localStorage.setItem('theme', selectedTheme);
+
+    activeTiles = getActiveTiles(selectedTheme);
+
     // Update the UI
-    location.reload();
+    if (document.getElementById('change-theme').checked) {
+      location.reload();
+    } else {
+      const fillCell = gridColors['fill-cell'];
+      const nextTile = activeTiles[fillCell % activeTiles.length];
+      updateTile(nextTile, 'fill-cell');      
+    }
   });
 
   // Do I need this?
@@ -354,8 +380,7 @@ window.onload = () => {
       gridColors[cellIndex] = 0;
     }
 
-    fillCell = ++gridColors[cellIndex] % activeTiles.length;
-
+    const fillCell = ++gridColors[cellIndex] % activeTiles.length;
     const nextTile = activeTiles[fillCell];
 
     updateTile(nextTile, cellIndex);
@@ -377,8 +402,7 @@ window.onload = () => {
       gridColors[cellIndex] = activeTiles.length;
     }
 
-    fillCell = --gridColors[cellIndex] % activeTiles.length;
-
+    const fillCell = --gridColors[cellIndex] % activeTiles.length;
     const nextTile = activeTiles[fillCell];
 
     updateTile(nextTile, cellIndex);
