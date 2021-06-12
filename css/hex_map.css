@@ -163,7 +163,7 @@ body {
   }
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1150px) {
   body {
     margin: 20px;
   }
