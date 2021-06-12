@@ -7,34 +7,36 @@
     <link rel="stylesheet" href="./css/hex_map.css"/>
   </head>
   <body>
-    <div class="header">
+    <div id="header" class="header collapsed">
       <div class="controls">
         <div class="dimensions">
           <button id="reset">Reset</button>
           <label>Width: <input id="width" type="text" value="AO" /></label>
           <label>Height: <input id="height" type="number" value="42" /></label>
         </div>
-        <label>Change theme: <input id="change-theme" type="checkbox" checked="checked" /></label>
-        <label class="tile-select">
-          Select Theme:
-          <select id="theme">
-            <option value="grass">Grass</option>
-            <option value="sand">Sand</option>
-            <option value="halloween">Halloween</option>
-            <option value="easter">Easter</option>
-            <option value="winter">Winter</option>
-          </select>
-        </label>
-        <!--
-          <label style="display: none;" class="tile-select">
-            Select tile set:
-            <select id="tileset">
-              <option value="standard" selected>Standard</option>
-              <option value="resource">Resource</option>
-              <option value="special">Special</option>
+        <div class="theme">
+          <label>Change theme: <input id="change-theme" type="checkbox" checked="checked" /></label>
+          <label class="tile-select">
+            Select Theme:
+            <select id="theme">
+              <option value="grass">Grass</option>
+              <option value="sand">Sand</option>
+              <option value="halloween">Halloween</option>
+              <option value="easter">Easter</option>
+              <option value="winter">Winter</option>
             </select>
           </label>
-        -->
+          <!--
+            <label style="display: none;" class="tile-select">
+              Select tile set:
+              <select id="tileset">
+                <option value="standard" selected>Standard</option>
+                <option value="resource">Resource</option>
+                <option value="special">Special</option>
+              </select>
+            </label>
+          -->
+        </div>
         <div id="fill-tile"
             data-cell="fill-cell"
             style="background-image: url('./img/standard/grass/Grassland.png');" 
@@ -55,6 +57,7 @@
         <label>Buildable: <output id="buildable"></output></label>
         <label>Center: <output id="center"></output></label>
         <label>Points: <output id="points" /></output></label>
+        <div id="menu-icon" class="menu-icon"></div>
       </div>
     </div>
     <div id="grid" class="grid"></div>

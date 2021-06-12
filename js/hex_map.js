@@ -304,6 +304,25 @@ window.onload = () => {
 
   grid.appendChild(fragment);
 
+  // Menu toggle
+  document.getElementById('menu-icon').addEventListener('touchend', e => {
+    const header = document.getElementById('header');
+    if (header.classList.contains('collapsed')) {
+      header.classList.remove('collapsed');
+    } else {
+      header.classList.add('collapsed')
+    }
+  });
+
+  document.getElementById('menu-icon').addEventListener('click', e => {
+    const header = document.getElementById('header');
+    if (header.classList.contains('collapsed')) {
+      header.classList.remove('collapsed');
+    } else {
+      header.classList.add('collapsed')
+    }
+  });
+
   // Display stats
   document.getElementById('buildable').textContent = `${Math.round(counters.buildable / 4)} / ${counters.buildable}`;
   document.getElementById('points').textContent = `${Math.round(counters.points / 4)} / ${counters.points}`;
