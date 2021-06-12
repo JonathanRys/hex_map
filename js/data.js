@@ -40,7 +40,7 @@ const TILES = {
                 buildable: false,
                 passable: true,
                 cost: 38,
-                points: 0,
+                points: 1,
                 defense_modifier: 0.7,
                 attack_modifier: 1.5
             }, {
@@ -113,7 +113,7 @@ const TILES = {
                 buildable: false,
                 passable: true,
                 cost: 38,
-                points: 0,
+                points: 1,
                 defense_modifier: 0.7,
                 attack_modifier: 0.9
             }, {
@@ -155,7 +155,7 @@ const TILES = {
                 src: './img/standard/easter/Spring_Meadows.png',
                 buildable: true,
                 passable: true,
-                cost: 25,
+                cost: 20,
                 points: 1,
                 defense_modifier: 0.8,
                 attack_modifier: 1.0
@@ -165,9 +165,9 @@ const TILES = {
                 src: './img/standard/easter/Springtime_Hills.png',
                 buildable: true,
                 passable: true,
-                cost: 33,
+                cost: 26,
                 points: 1,
-                defense_modifier: 1.1,
+                defense_modifier: 1.10,
                 attack_modifier: 0.9
             }, { // This one is impassable
                 name: 'Mountains',
@@ -180,15 +180,15 @@ const TILES = {
                 defense_modifier: 0,
                 attack_modifier: 0
             }, { // This one is unbuildable
-                name: 'Rocky Hills', 
+                name: 'Practice Ground', 
                 color: '#999999',
-                src: './img/standard/easter/Rocky_Hills.png',
+                src: './img/standard/easter/Practice_Ground.png',
                 buildable: false,
                 passable: true,
-                cost: 38,
-                points: 0,
-                defense_modifier: 0.7,
-                attack_modifier: 1.5
+                cost: 30,
+                points: 1,
+                defense_modifier: 1.5,
+                attack_modifier: 0.7
             }, {
                 name: 'Woods of Joy',
                 color: '#237007',
@@ -259,7 +259,7 @@ const TILES = {
                 buildable: false,
                 passable: true,
                 cost: 38,
-                points: 0,
+                points: 1,
                 defense_modifier: 0.7,
                 attack_modifier: 1.5
             }, {
@@ -294,7 +294,80 @@ const TILES = {
                 attack_modifier: 0
             }
         ],
-        winter: [],
+        winter: [
+            {
+                name: 'Icy Meadows',
+                color: '#eeeeee',
+                src: './img/standard/winter/Icy_Meadows.png',
+                buildable: true,
+                passable: true,
+                cost: 25,
+                points: 1,
+                defense_modifier: 0.8,
+                attack_modifier: 1.0
+            }, {
+                name: 'Snowball Hills',
+                color: '#dddddd',
+                src: './img/standard/winter/Snowball_Hills.png',
+                buildable: true,
+                passable: true,
+                cost: 33,
+                points: 1,
+                defense_modifier: 1.1,
+                attack_modifier: 0.9
+            }, { // This one is impassable
+                name: 'Mt. Frosty',
+                color: '#777777',
+                src: './img/standard/winter/Mt._Frosty.png',
+                buildable: false,
+                passable: false,
+                cost: 0,
+                points: 0,
+                defense_modifier: 0,
+                attack_modifier: 0
+            },
+            { // This one is unbuildable
+                name: 'Slippery Slopes', 
+                color: '#999999',
+                src: './img/standard/winter/Slippery_Slopes.png',
+                buildable: false,
+                passable: true,
+                cost: 38,
+                points: 1,
+                defense_modifier: 0.7,
+                attack_modifier: 1.5
+            }, {
+                name: 'Fir Forest',
+                color: '#237007',
+                src: './img/standard/winter/Fir_Forest.png',
+                buildable: true,
+                passable: true,
+                cost: 36,
+                points: 1,
+                defense_modifier: 1.3,
+                attack_modifier: 0.7
+            }, {
+                name: 'Frozen Swamp',
+                color: '#377e78',
+                src: './img/standard/winter/Frozen_Swamp.png',
+                buildable: true,
+                passable: true,
+                cost: 63,
+                points: 1,
+                defense_modifier: 1.0,
+                attack_modifier: 1.0
+            }, { // Impassable
+                name: 'Water',
+                color: '#6495ed',
+                src: './img/standard/winter/Water.png',
+                buildable: false,
+                passable: false,
+                cost: 0,
+                points: 0,
+                defense_modifier: 0,
+                attack_modifier: 0
+            }
+        ],
     },
     special: {
         // Tile Theme
@@ -355,7 +428,8 @@ const TILES = {
             }
         ],
         halloween: [
-            { 
+            {
+                name: 'Pal Sematary',
                 color: '#999999',
                 src: './img/special/halloween/Pal_Sematary.png',
                 buildable: false,
@@ -393,23 +467,105 @@ const TILES = {
                 src: './img/special/easter/Imposing_Structure.png',
                 buildable: false,
                 passable: true,
-                cost: 25,
+                cost: 26,
                 points: 5,
-                defense_modifier: 0.8,
-                attack_modifier: 1.0
+                defense_modifier: 0.10,
+                attack_modifier: 0.9
             }, {
                 name: 'Miracle Shrine',
                 color: '#eeeeee',
                 src: './img/special/easter/Miracle_Shrine.png',
                 buildable: false,
                 passable: true,
-                cost: 45,
+                cost: 36,
                 points: 20,
                 defense_modifier: 1.3,
                 attack_modifier: 0.7
+            }, {
+                name: 'Egg Mine',
+                color: '#eeeeee',
+                src: './img/resource/easter/Egg_Mine.png',
+                buildable: false,
+                passable: true,
+                cost: 26,
+                points: 5,
+                defense_modifier: 1.10, // These might be wrong
+                attack_modifier: 0.9 // These might be wrong
+            }, {
+                name: 'Giant Hare',
+                color: '#eeeeee',
+                src: './img/resource/easter/Giant_Hare.png',
+                buildable: false,
+                passable: true,
+                cost: 40,
+                points: 5,
+                defense_modifier: 0.8, // These might be wrong
+                attack_modifier: 1.0 // These might be wrong
+            }, {
+                name: 'Eggsercise Yard',
+                color: '#eeeeee',
+                src: './img/resource/easter/Eggsercise_Yard.png',
+                buildable: false,
+                passable: true,
+                cost: 20,
+                points: 5,
+                defense_modifier: 0.8, // These might be wrong
+                attack_modifier: 1.0 // These might be wrong
             }
         ],
-        winter: []
+        winter: [
+            {
+                name: 'Wintery Mill',
+                color: '#eeeeee',
+                src: './img/special/winter/Wintery_Mill.png',
+                buildable: false,
+                passable: true,
+                cost: 10,
+                points: 5,
+                defense_modifier: 0.8,
+                attack_modifier: 1.00
+            }, {
+                name: 'Manfred',
+                color: '#eeeeee',
+                src: './img/special/winter/Manfred.png',
+                buildable: false,
+                passable: true,
+                cost: 20,
+                points: 5,
+                defense_modifier: 0.8,
+                attack_modifier: 1.00
+            }, {
+                name: 'Frostbitten Ruins',
+                color: '#eeeeee',
+                src: './img/special/winter/Frostbitten_Ruins.png',
+                buildable: false,
+                passable: true,
+                cost: 33,
+                points: 10,
+                defense_modifier: 0.9,
+                attack_modifier: 1.10
+            }, {
+                name: 'Festive Tree',
+                color: '#eeeeee',
+                src: './img/special/winter/Festive_Tree.png',
+                buildable: false,
+                passable: true,
+                cost: 36,
+                points: 35,
+                defense_modifier: 1.3,
+                attack_modifier: 0.7
+            }, { // This one is impassable
+                name: 'Ice Floes', 
+                color: '#999999',
+                src: './img/standard/winter/Ice_Floes.png',
+                buildable: false,
+                passable: false,
+                cost: 0,
+                points: 0,
+                defense_modifier: 0,
+                attack_modifier: 0
+            }
+        ]
     },
     resource: {
         // Tile Theme
@@ -514,9 +670,9 @@ const TILES = {
         ],
         easter: [
             {
-                name: 'Egg Mine',
+                name: 'Mine',
                 color: '#eeeeee',
-                src: './img/resource/easter/Egg_Mine.png',
+                src: './img/resource/easter/Mine.png',
                 buildable: false,
                 passable: true,
                 cost: 45,
@@ -524,9 +680,9 @@ const TILES = {
                 defense_modifier: 1.3, // These might be wrong
                 attack_modifier: 0.7 // These might be wrong
             }, {
-                name: 'Giant Hare',
+                name: 'Library',
                 color: '#eeeeee',
-                src: './img/resource/easter/Giant_Hare.png',
+                src: './img/resource/easter/Library.png',
                 buildable: false,
                 passable: true,
                 cost: 45,
@@ -534,9 +690,9 @@ const TILES = {
                 defense_modifier: 1.3, // These might be wrong
                 attack_modifier: 0.7 // These might be wrong
             }, {
-                name: 'Eggsercise Yard',
+                name: 'Remote Village',
                 color: '#eeeeee',
-                src: './img/resource/easter/Eggsercise_Yard.png',
+                src: './img/resource/easter/Village.png',
                 buildable: false,
                 passable: true,
                 cost: 45,
