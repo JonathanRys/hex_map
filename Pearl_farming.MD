@@ -9,7 +9,7 @@ Chests to save for the Blacksmith event:
  * Gold Chests: This extra gold will be useful for melting all the items from your Uber chests.
  * Epic Chests: save these for when your gold is full or use when you only need a little more gold.
  * Pro Chests: If you have space, open these when you get them because the items are often useful but [see below](#How-to-melt-items) about pro items
-Other chests: Item chests, Normal; Magic; Rare; Epic; and Legendary chests
+ * Other chests: Item chests, Normal; Magic; Rare; Epic; and Legendary chests
 
 ### Sources of chests
  * Voucher Bazaar (Uber)
