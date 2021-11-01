@@ -100,7 +100,7 @@ Here is a calculator to help figure out how to optimize for farming: [Farming ca
 ### Chamber of Fortune
 The odds in the Chamber of Fortune are different for each chest and event (ninja, war, conquest)
  * Always collect or sell items, never melt them directly
- * Filling your gold before raiding - trick: use the dungeon gold to top it off
+ * Filling your gold before raiding - trick: use gold from the dungeon to top it off
 
 ### Other ways to get pearls
  * Secret birthday landscape pearls (chicken drop)
