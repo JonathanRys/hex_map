@@ -102,7 +102,7 @@ The odds in the Chamber of Fortune are different for each chest and event (ninja
  * Always collect or sell items, never melt them directly
  * Filling your gold before raiding - trick: use the dungeon gold to top it off
 
-Other ways to get pearls:
+### Other ways to get pearls
  * Secret birthday landscape pearls (chicken drop)
  * Seasons
  * Daily pearls
