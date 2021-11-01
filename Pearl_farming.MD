@@ -95,7 +95,7 @@ Spamming gargoyles might seem like the obvious thing to do, but they clog each o
  * Zombies: Run forward until they start to appear then run back to your tent.
  * Yetis:
 
-I created this calculator to help figure out how to optimize for farming: [Farming calculator](https://hex-map.s3.us-east-1.amazonaws.com/farming_calculator.html)
+Here is a calculator to help figure out how to optimize for farming: [Farming calculator](https://hex-map.s3.us-east-1.amazonaws.com/farming_calculator.html)
 
 ### Chamber of Fortune
 The odds in the Chamber of Fortune are different for each chest and event (ninja, war, conquest)
