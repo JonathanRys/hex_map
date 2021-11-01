@@ -91,9 +91,9 @@ The primary concern is getting 100% and crashing the gate quickly.  The fastest 
 Spamming gargoyles might seem like the obvious thing to do, but they clog each other up and all attack the same target so it's faster to summon in batches of 2-3 with a second or two between them.
 
 #### Controlling your mercs
-Ninjas:
-Zombies: Run forward until they start to appear then run back to your tent.
-Yetis:
+ * Ninjas:
+ * Zombies: Run forward until they start to appear then run back to your tent.
+ * Yetis:
 
 I created this calculator to help figure out how to optimize for farming: [Farming calculator](https://hex-map.s3.us-east-1.amazonaws.com/farming_calculator.html)
 
