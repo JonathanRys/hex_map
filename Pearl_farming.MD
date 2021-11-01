@@ -108,3 +108,6 @@ The odds in the Chamber of Fortune are different for each chest and event (ninja
  * Daily pearls
  * Defense pearls (Hans beast)
  * Hidden treasure drops
+
+### Finishing quests while farming
+If you started playing before a certain date quests will be available to you for insignificant rewards.  While pearl farming you can work on these quests as well.
