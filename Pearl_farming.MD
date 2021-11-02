@@ -1,4 +1,4 @@
-# Blacksmith Event
+## Blacksmith Event
 
 **Golden Rule of RR2: Hoard everything.**
 
