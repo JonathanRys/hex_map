@@ -5,9 +5,9 @@
 The blacksmith event(often abbreviated BS) is one of the most useful events in the game.  As with everything in this game, you should keep your chests until they are about to expire or an event comes along where those chests become more useful.  Some players will wait until an event is announced before melting the next week's worth of chests.  And they will stockpile chests from the festival in preparation for events like the blacksmith event.
 
 Chests to save for the Blacksmith event:
- * Uber Chests: It's best to get these from the festival(because you can get them for 117 gems/ea.), in exchange for tickets, or as rewards in wars and ninja events.
+ * Uber Chests: It's best to get these from the festival(because you can get them for 117 gems/ea.), in exchange for tickets, or as rewards in wars and ninja events.  Uber chests give at least one unique item and the rest Epic, Legendary, or Uber.  The actual chances vary depending on where the chest came from.
  * Gold Chests: This extra gold will be useful for melting all the items from your Uber chests.
- * Epic Chests: save these for when your gold is full or use when you only need a little more gold.
+ * Epic Chests: Save these for when your gold is full or use when you only need a little more gold.
  * Pro Chests: If you have space, open these when you get them because the items are often useful but [see below](#How-to-melt-items) about pro items
  * Other chests: Item chests, Normal; Magic; Rare; Epic; and Legendary chests
 
