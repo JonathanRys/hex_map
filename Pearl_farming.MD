@@ -36,13 +36,14 @@ Once the event begins, start melting your Uber chests and extra items.  Save you
 The number of pearls you get for each item and the time it takes to melt it down improve with every slot purchased.  It is important to get the maximum number of slots as soon as possible in order to boost your hero quickly.  Pearls and runes are the most valuable currencies in the game so unlocking those slots early on increases the rate at which your character grows.
 
 ### How to forge items
-Pearls can be used to forge units, spells, items, and obstacles.  During the Blacksmith event, the primary focus should be on your skull perk items
+Pearls can be used to forge units, spells, items, and obstacles.  During the Blacksmith event, the primary focus should be on your skull perk items. The amount increase per forge is based on the current value of the item.  A Pro and Uber item with the same skull perk value will increase the same amout per forge.  The pearl costs and time to complete increase based on the number of times the item has been forged, not the value of the item.  If you have an Uber Riajin Drums cape with 6.7% on each side, and a pro cape also with 6.7% on each side, both will increase the same amount per forge and there is very little interest switching to a higher level or pro version of the item if you already have runes placed and forges invested.  Some players like to wait until they hit level 130 and the item values stop increasing before they start seriously forging their items.
 
 #### Where to start
 If you are new to the game or are still low-level then read this section:
 
  * Start by forging your units because they are used for both attack and defense; getting two rune slots on each of your units should be a priority.
- * Forge your spells and obstacles
+ * Forge your units, but keep upgrading your waves - they take the longest to max out of anything.
+ * Forge your spells and obstacles as soon as they can be forged and keep forging them until they hit level ~130 where the increase per forge is no longer worth it.
  * Forge your items - You want to increase your skull bonus as much as possible. For more info, check out my [war tips](https://hex-map.s3.us-east-1.amazonaws.com/war_tips.html)
 
 ## Pearl Farming
