@@ -5,7 +5,7 @@
 The blacksmith event(often abbreviated BS) is one of the most useful events in the game.  As with everything in this game, you should keep your chests until they are about to expire or an event comes along where those chests become more useful.  Some players will wait until an event is announced before melting the next week's worth of chests.  And they will stockpile chests from the festival in preparation for events like the blacksmith event.
 
 Chests to save for the Blacksmith event:
- * Uber Chests: It's best to get these from the festival(cheapest way to get them for gems [117 gems/ea.]), in exchange for tickets, or as rewards in wars and ninja events.
+ * Uber Chests: It's best to get these from the festival(because you can get them for 117 gems/ea.), in exchange for tickets, or as rewards in wars and ninja events.
  * Gold Chests: This extra gold will be useful for melting all the items from your Uber chests.
  * Epic Chests: save these for when your gold is full or use when you only need a little more gold.
  * Pro Chests: If you have space, open these when you get them because the items are often useful but [see below](#How-to-melt-items) about pro items
@@ -25,7 +25,7 @@ Chests to save for the Blacksmith event:
  * War (Uber, Golden, Pro)
 
 ### Gold, Legendary, and Epic chests
-If your gold is full before you open gold chests (and you don't spend gold melting items you find), you'll get food, but if your food is also full, you'll get pearls instead.  You should always wait to collect your chests from frog seasons until you need them or the season ends.  I save gold chests for the blacksmith event to melt items with otherwise I turn them into pearls.  If you only have a few gold chests and you want pearls, check out the tips [below](#Pearl-Farming)
+If your gold is full before you open gold chests (and you don't spend gold melting items you find), you'll get food, but if your food is also full, you'll get pearls instead.  You should always wait to collect your chests from frog seasons until you need them or the season ends.  I save gold chests for the blacksmith event to melt items with otherwise I turn them into pearls.  If you only have a few gold chests and you want pearls, check out the [tips on pearl farming](#Pearl-Farming)
 
 ### How to melt items
 Once the notification appears saying that a blacksmith event is coming, boost your blacksmith and load it up with any pro items that you can melt.  Load it up a day(less if you have fewer slots) before the event starts, but wait until the event starts to collect those pearls.  It's much harder than it sounds.  I put a sticky note over the button on my screen so I don't press it but have still screwed up.  If you need to boost your blacksmith again without collecting your pearls you can access the blacksmith via the runes menu inside the castle.
@@ -44,18 +44,6 @@ If you are new to the game or are still low-level then read this section:
  * Start by forging your units because they are used for both attack and defense; getting two rune slots on each of your units should be a priority.
  * Forge your spells and obstacles
  * Forge your items - You want to increase your skull bonus as much as possible. For more info, check out my [war tips](https://hex-map.s3.us-east-1.amazonaws.com/war_tips.html)
-
-### Runes
-The only rune that is really relevant to pearl farming is the farmer rune.  The farmer rune reduces the amount of food needed for each battle:
- * Level 1: 7-9%
- * Level 2: 9-11%
- * Level 3: 11-13%
- * Level 4: 13-15%
- * Level 5: 15-17%
- * Level 6: 17-20% + 30-35% Scream boost
-
-The treasure hunter rune doesn't yield any treasure on the low-level bases we'll be raiding while pearl farming so it isn't useful here.
-
 
 ## Pearl Farming
 ### Who to farm
@@ -80,6 +68,17 @@ There are only three perks that matter for pearl farming:
  * Farmer
 
 Try to maximize pearl chance, then luck with the lowest priority on farmer.  Increasing your luck also increases your chance for getting pearls.
+
+### Runes
+The only rune that is really relevant to pearl farming is the farmer rune.  The farmer rune reduces the amount of food needed for each battle:
+ * Level 1: 7-9%
+ * Level 2: 9-11%
+ * Level 3: 11-13%
+ * Level 4: 13-15%
+ * Level 5: 15-17%
+ * Level 6: 17-20% + 30-35% Scream boost
+
+The treasure hunter rune doesn't yield any treasure on the low-level bases we'll be raiding while pearl farming so it isn't useful here.
 
 ### Farming for speed
 Since pearl farming requires lots of battles, reducing the time each battle takes increases the number of battles one can do in a day.
