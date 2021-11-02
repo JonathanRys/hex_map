@@ -2,7 +2,7 @@
 
 **Golden Rule of RR2: Hoard everything.**
 
-The blacksmith event is one of the most useful events in the game.  As with everything in this game, you should keep your chests until they are about to expire or an event comes along where those chests become more useful.  Some players will wait until an event is announced before melting the next week's worth of chests.  And they will stockpile chests from the festival in preparation for events like the blacksmith event.
+The blacksmith event(often abbreviated BS) is one of the most useful events in the game.  As with everything in this game, you should keep your chests until they are about to expire or an event comes along where those chests become more useful.  Some players will wait until an event is announced before melting the next week's worth of chests.  And they will stockpile chests from the festival in preparation for events like the blacksmith event.
 
 Chests to save for the Blacksmith event:
  * Uber Chests: It's best to get these from the festival(cheapest way to get them for gems [117 gems/ea.]), in exchange for tickets, or as rewards in wars and ninja events.
@@ -21,11 +21,11 @@ Chests to save for the Blacksmith event:
  * Collections (Golden, Pro)
  * Offers (Golden, Pro)
  * Magic Market (Golden, Pro)
- * Seasons (Golden, Pro)
+ * Frog Seasons (Golden, Pro)
  * War (Uber, Golden, Pro)
 
 ### Gold, Legendary, and Epic chests
-If your gold is full before you open gold chests (and you don't spend gold melting items you find), you'll get food, but if your food is also full, you'll get pearls instead.  You should always wait to collect your chests from seasons until you need them or seasons ends.  I save gold chests for the blacksmith event to melt items with otherwise I turn them into pearls.  If you only have a few gold chests and you want pearls, check out the tips [below](#Pearl-Farming)
+If your gold is full before you open gold chests (and you don't spend gold melting items you find), you'll get food, but if your food is also full, you'll get pearls instead.  You should always wait to collect your chests from frog seasons until you need them or the season ends.  I save gold chests for the blacksmith event to melt items with otherwise I turn them into pearls.  If you only have a few gold chests and you want pearls, check out the tips [below](#Pearl-Farming)
 
 ### How to melt items
 Once the notification appears saying that a blacksmith event is coming, boost your blacksmith and load it up with any pro items that you can melt.  Load it up a day(less if you have fewer slots) before the event starts, but wait until the event starts to collect those pearls.  It's much harder than it sounds.  I put a sticky note over the button on my screen so I don't press it but have still screwed up.  If you need to boost your blacksmith again without collecting your pearls you can access the blacksmith via the runes menu inside the castle.
@@ -36,7 +36,7 @@ Once the event begins, start melting your Uber chests and extra items.  Save you
 The number of pearls you get for each item and the time it takes to melt it down improve with every slot purchased.  It is important to get the maximum number of slots as soon as possible in order to boost your hero quickly.  Pearls and runes are the most valuable currencies in the game so unlocking those slots early on increases the rate at which your character grows.
 
 ### How to forge items
-Pearls can be used to forge units, spells, items, and obstacles.  During the Blacksmith(BS) event, the primary focus should be on your skull perk items
+Pearls can be used to forge units, spells, items, and obstacles.  During the Blacksmith event, the primary focus should be on your skull perk items
 
 #### Where to start
 If you are new to the game or are still low-level then read this section:
@@ -104,7 +104,7 @@ The odds in the Chamber of Fortune are different for each chest and event (ninja
 
 ### Other ways to get pearls
  * Secret birthday landscape pearls (chicken drop)
- * Seasons
+ * Frog Seasons
  * Daily pearls
  * Defense pearls (Hans beast)
  * Hidden treasure drops
